@@ -8,7 +8,7 @@ use App\Models\Question;
 use App\Models\Student;
 use Exception;
 use Illuminate\Http\Request;
-use LINE\Laravel\Facade\LINEBot;
+use LINE\LINEBot;
 use LINE\LINEBot\Constant\HTTPHeader;
 use LINE\LINEBot\Event\FollowEvent;
 use LINE\LINEBot\Event\MessageEvent;
@@ -30,12 +30,15 @@ class LineController extends Controller
         // イベント取得
         $http_client = new CurlHTTPClient($channel_access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
-        $signature = $_SERVER['HTTP_' . HTTPHeader::LINE_SIGNATURE];
+        
+        // $signature = $_SERVER['HTTP_' . HTTPHeader::LINE_SIGNATURE];
+        $signature = $request->headers->get(HTTPHeader::LINE_SIGNATURE);
         $events = $bot->parseEventRequest($request->getContent(), $signature);
         $event = $events[0];
 
         // リプライトークン（返信に必要）
         $replyToken = $event->getReplyToken();
+
 
         // LINEのユーザー識別子（uuid）
         $line_id = $event->getUserId();
