@@ -27,3 +27,6 @@ require __DIR__.'/auth.php';
 Route::post('line', 'LineController@line');
 Route::get('line', 'LineController@get');
 Route::get('results', 'ResultController@all_results');
+
+// 管理者画面
+Route::get('management', 'ManagementController@showAnswersStatus');
