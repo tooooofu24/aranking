@@ -22,3 +22,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// LINE用ルート
+Route::post('line', 'LineController@line');
+Route::get('line', 'LineController@get');
+Route::get('results', 'ResultController@all_results');
