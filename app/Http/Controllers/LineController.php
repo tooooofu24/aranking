@@ -2,34 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Library\LineMessagingApi;
+use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Student;
 use Exception;
-use LINE\LINEBot;
+use Illuminate\Http\Request;
+use LINE\Laravel\Facade\LINEBot;
 use LINE\LINEBot\Constant\HTTPHeader;
 use LINE\LINEBot\Event\FollowEvent;
 use LINE\LINEBot\Event\MessageEvent;
 use LINE\LINEBot\Event\PostbackEvent;
 use LINE\LINEBot\Event\UnfollowEvent;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\BoxComponentBuilder;
-use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\ButtonComponentBuilder;
-use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\TextComponentBuilder;
-use LINE\LINEBot\MessageBuilder\Flex\ContainerBuilder\BubbleContainerBuilder;
-use LINE\LINEBot\MessageBuilder\Flex\ContainerBuilder\CarouselContainerBuilder;
-use LINE\LINEBot\MessageBuilder\FlexMessageBuilder;
 use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
-use LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 
 class LineController extends Controller
 {
