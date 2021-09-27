@@ -20,7 +20,7 @@ class ManagementController extends Controller
             $count = count($array);
             $datas[] = [
                 'name' => $answer->line_name,
-                'updated_at' => $answer->updated_at ? $answer->updated_at->format('m/d H:i') : '',
+                'updated_at' => $answer->updated_at ? $answer->updated_at->format('n/d H:i') : '',
                 'count' => $count
             ];
         }
