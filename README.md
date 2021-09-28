@@ -1,64 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## 「あらんきんぐ」とは
+私の所属しているサークルで定期的に行われているサークル内の番付けです。  
+「〇〇な人は？」というような質問に何問か答えて、それを集計してランキングにします。  
+今回私はLaravel×LINE Messaging APIであらんきんぐを作成しました。
+## 作った理由
+例年、あらんきんぐは紙で回答を集め、集計していました。  
+しかし去年から、コロナの影響で紙での集計は難しいとのことで、Googleのアンケートフォームで集計を行うようになりました。
+回答の集計自体は自動化できて良かったのですが、2つ問題点がありました。
+- 大量の質問を一気に回答しなくてはいけないということ
+- 1人で複数回答ができてしまうこと  
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+それらの問題点を解決するためにLINEbotでの実装をすることを決めました。
+## サービスの機能
+ここから私が実際に作ったLINEbotの紹介をします。「LINE上で完結する」ことを目標に作成しました。  
+実際に「投票」、「回答の修正」、「結果の確認」まで全てLINE上でできるようになっています。     
+<img width="200" src="https://user-images.githubusercontent.com/64852221/130006644-17669957-1b94-49d0-9abc-3b69f2f8066b.png">
+<img width="200" src="https://user-images.githubusercontent.com/64852221/130006970-7704ae9d-c058-461b-876d-6a1a05e0ed7f.png">
+<img width="200" src="https://user-images.githubusercontent.com/64852221/130007468-0ffe5725-cc64-4064-87f5-acaf872f415b.png">
+<img width="200" src="https://user-images.githubusercontent.com/64852221/130007481-7382df7c-27f2-4862-9200-c82603a0089e.png">
 
-## About Laravel
+## 結果画面
+[ランキングの結果画面](https://aranking2021.sumomo.ne.jp/results)になります。  
+リロードするたびに表示されるポケモンが変わる仕様になっています。  
+![image](https://user-images.githubusercontent.com/64852221/133055895-4452b567-eb5a-4fd2-a31c-a8d1becfb323.png)    
+レスポンシブWebデザインにも対応しています。以下スマートフォンでの表示になります。  
+<img width="200" src="https://user-images.githubusercontent.com/64852221/133056721-e101a699-a0a8-4e9b-95e7-37e170db1863.png" >  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 使用方法
+下記ボタンもしくはQRコードからLINEbotを追加します。    
+追加して「使い方」とLINEを送ると使い方のチュートリアルが見られます。  
+「エラー」と送信するとエラーが発生したときのテストができます。  
+![image](https://user-images.githubusercontent.com/64852221/129901335-0a7f9bb1-db88-4182-8566-79b9c110389f.png)<a href="https://lin.ee/xFSDUDx"><img height="36" border="0" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 工夫した点
+##### レスポンスを全て数値で管理した
+LINE Messaging APIではレスポンスに文字列しか指定できません。keyとvalueの形で持つことができないので、私は誰がどんなリクエストを送ってきたのかを全て数字で管理しました。  
+また、リクエストで送られてきた数値を計算する際、割り算を使うとバグが出てしまう可能性があるため、割り算は使用していません。
+##### APIの処理をLibraryにまとめた
+APIにリクエストを送る記述をController内で全て書いてしまうと、可読性が下がり、オブジェクト指向的にも良くないということでコードを分離しました。APIに関する記述は[App\Library\LineMessagingApi.php](https://github.com/tooooofu24/arank/blob/master/app/Library/LineMessagingApi.php)で記載するようにしています。
+##### グループごとに色分けをした。
+回答をする際、4色に分かれているのがわかると思います。これはサークル内のグループで色分けをしており、新入生でも誰がどのグループなのか分かるデザインになっています。
+##### 集計結果は既定の日時にならないと表示されない
+既定の日時になるまでは「結果を見る」ボタンを押しても「集計中です」と返信が来るようになっており、仮に結果画面のurlにアクセスしたとしても、結果が見れないような仕様にしています。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 使用技術
+- Laravel 5.5.50
+- Bootstrap 5.0
+- [LINE Messaging API](https://developers.line.biz/ja/services/messaging-api/)
+- MySQL
+- Git
+- [Poke API](https://pokeapi.co/)
