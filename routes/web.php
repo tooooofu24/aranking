@@ -30,3 +30,6 @@ Route::get('results', 'ResultController@all_results');
 
 // 管理者画面
 Route::get('management', 'ManagementController@showAnswersStatus');
+
+// 回答状況画面
+Route::get('answerStatus', 'ManagementController@answerStatus');

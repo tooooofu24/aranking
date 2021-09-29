@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Action;
+use Illuminate\Support\Facades\DB;
 
 class ManagementController extends Controller
 {
@@ -25,5 +27,14 @@ class ManagementController extends Controller
             ];
         }
         return view('management.answer_status', compact('datas'));
+    }
+    public function answerStatus()
+    {
+        $userCount = Answer::count();
+        $answerCount = 0;
+        for ($i = 10; $i <= 40; $i++) {
+            $answerCount += DB::table('answers')->whereNotNull("q$i",)->count();
+        }
+        return view('management.answerStatus', compact('userCount', 'answerCount'));
     }
 }
