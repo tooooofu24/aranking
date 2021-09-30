@@ -25,6 +25,11 @@
 レスポンシブWebデザインにも対応しています。以下スマートフォンでの表示になります。  
 <img width="200" src="https://user-images.githubusercontent.com/64852221/133056721-e101a699-a0a8-4e9b-95e7-37e170db1863.png" >  
 
+## 回答状況確認画面
+[回答状況確認画面](https://aranking2021.sumomo.ne.jp/answerStatus)になります。  
+現在のサークル全体の回答状況が可視化できます。このページを使って回答の催促を行いました。
+![image](https://user-images.githubusercontent.com/64852221/135433734-f2425691-a827-4a81-b2c9-d772f319c67e.png)
+
 ## 使用方法
 下記ボタンもしくはQRコードからLINEbotを追加します。    
 追加して「使い方」とLINEを送ると使い方のチュートリアルが見られます。  
