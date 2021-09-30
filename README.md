@@ -12,18 +12,23 @@
 それらの問題点を解決するためにLINEbotでの実装をすることを決めました。
 ## サービスの機能
 ここから私が実際に作ったLINEbotの紹介をします。「LINE上で完結する」ことを目標に作成しました。  
-実際に「投票」、「回答の修正」、「結果の確認」まで全てLINE上でできるようになっています。     
-<img width="200" src="https://user-images.githubusercontent.com/64852221/130006644-17669957-1b94-49d0-9abc-3b69f2f8066b.png">
-<img width="200" src="https://user-images.githubusercontent.com/64852221/130006970-7704ae9d-c058-461b-876d-6a1a05e0ed7f.png">
-<img width="200" src="https://user-images.githubusercontent.com/64852221/130007468-0ffe5725-cc64-4064-87f5-acaf872f415b.png">
-<img width="200" src="https://user-images.githubusercontent.com/64852221/130007481-7382df7c-27f2-4862-9200-c82603a0089e.png">
+実際に「投票」、「回答の修正」、「結果の確認」まで全てLINE上でできるようになっています。    
+<div align="center">
+    <img width="200" src="https://user-images.githubusercontent.com/64852221/130006644-17669957-1b94-49d0-9abc-3b69f2f8066b.png">
+    <img width="200" src="https://user-images.githubusercontent.com/64852221/130006970-7704ae9d-c058-461b-876d-6a1a05e0ed7f.png">
+    <img width="200" src="https://user-images.githubusercontent.com/64852221/130007468-0ffe5725-cc64-4064-87f5-acaf872f415b.png">
+    <img width="200" src="https://user-images.githubusercontent.com/64852221/130007481-7382df7c-27f2-4862-9200-c82603a0089e.png">
+</div>
+
 
 ## 結果画面
 [ランキングの結果画面](https://aranking2021.sumomo.ne.jp/results)になります。  
 リロードするたびに表示されるポケモンが変わる仕様になっています。  
 ![image](https://user-images.githubusercontent.com/64852221/133055895-4452b567-eb5a-4fd2-a31c-a8d1becfb323.png)    
 レスポンシブWebデザインにも対応しています。以下スマートフォンでの表示になります。  
-<img width="200" src="https://user-images.githubusercontent.com/64852221/133056721-e101a699-a0a8-4e9b-95e7-37e170db1863.png" >  
+<div align="center">
+    <img width="200" src="https://user-images.githubusercontent.com/64852221/133056721-e101a699-a0a8-4e9b-95e7-37e170db1863.png" >  
+</div>
 
 ## 回答状況確認画面
 [回答状況確認画面](https://aranking2021.sumomo.ne.jp/answerStatus)になります。  
@@ -34,7 +39,9 @@
 下記ボタンもしくはQRコードからLINEbotを追加します。    
 追加して「使い方」とLINEを送ると使い方のチュートリアルが見られます。  
 「エラー」と送信するとエラーが発生したときのテストができます。  
-![image](https://user-images.githubusercontent.com/64852221/129901335-0a7f9bb1-db88-4182-8566-79b9c110389f.png)<a href="https://lin.ee/xFSDUDx"><img height="36" border="0" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>  
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/64852221/129901335-0a7f9bb1-db88-4182-8566-79b9c110389f.png">
+</div>
 
 ## 工夫した点
 ##### レスポンスを全て数値で管理した
