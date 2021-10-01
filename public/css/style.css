@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+.wf-roundedmplus1c {
+  font-family: "M PLUS Rounded 1c";
+}
+.gold {
+  color: #dbb400;
+}
+.silver {
+  color: #9fa0a0;
+}
+.brown {
+  color: #c47022;
+}
+.fs-100 {
+  font-size: 1rem;
+}
+.fs-200 {
+  font-size: 1.5rem;
+}
