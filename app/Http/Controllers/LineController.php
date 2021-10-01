@@ -64,6 +64,7 @@ class LineController extends Controller
                 // ポストバックイベントの時の処理
                 exit;
             } elseif ($event instanceof PostbackEvent) {
+                $bot->replyText($replyToken, '集計が終わりました。「結果を見る」と送信するとあらんきんぐの結果が見れます！');
                 $data = $event->getPostbackData();
 
                 // 何も返答しないボタンには'-'が入っている
@@ -133,6 +134,11 @@ class LineController extends Controller
                 // メッセージイベント
             } elseif ($event instanceof MessageEvent) {
                 $message = $event->getText();
+                if ($message == '結果を見る') {
+                    $bot->replyText($replyToken, 'https://aranking2021.sumomo.ne.jp/results');
+                }
+                $bot->replyText($replyToken, '集計が終わりました。「結果を見る」と送信するとあらんきんぐの結果が見れます！');
+
                 if ($message == '回答を始める') {
                     $builder = LineMessagingApi::start();
                     $bot->replyMessage($replyToken, $builder);
