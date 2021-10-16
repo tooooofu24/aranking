@@ -6,6 +6,7 @@ use App\Library\LineMessagingApi;
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Student;
+use App\Models\Test;
 use Exception;
 use Illuminate\Http\Request;
 use LINE\LINEBot;
@@ -30,7 +31,7 @@ class LineController extends Controller
         // イベント取得
         $http_client = new CurlHTTPClient($channel_access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
-        
+
         // $signature = $_SERVER['HTTP_' . HTTPHeader::LINE_SIGNATURE];
         $signature = $request->headers->get(HTTPHeader::LINE_SIGNATURE);
         $events = $bot->parseEventRequest($request->getContent(), $signature);
@@ -48,13 +49,13 @@ class LineController extends Controller
         $line_name = $profile["displayName"];
 
         // DBにデータがなければテーブル作成（友達追加時など）
-        $answer = Answer::where('line_id', $line_id)->first();
+        $answer = Test::where('line_id', $line_id)->first();
         if (!$answer) {
-            $answer = new Answer();
+            $answer = new Test();
             $answer->line_id = $line_id;
             $answer->line_name = $line_name;
             $answer->save();
-            $answer = Answer::where('line_id', $line_id)->first();
+            $answer = Test::where('line_id', $line_id)->first();
         }
 
         // メインの処理 ---------------------------------------------------------------------------------------
