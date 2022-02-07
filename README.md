@@ -1,7 +1,7 @@
 ## 「あらんきんぐ」とは
 私の所属しているサークルで定期的に行われているサークル内の番付けです。  
 「〇〇な人は？」というような質問に何問か答えて、それを集計してランキングにします。  
-[こちら](https://aranking2021.sumomo.ne.jp/results)を見ていただくとイメージがしやすいかと思います。  
+[こちら](https://chibatoya.sakura.ne.jp/aranking/public/results)を見ていただくとイメージがしやすいかと思います。  
 今回私はLaravel×LINE Messaging APIであらんきんぐを作成しました。
 ## 作った理由
 例年、あらんきんぐは紙で回答を集め、集計していました。  
@@ -23,7 +23,7 @@
 
 
 ## 結果画面
-[ランキングの結果画面](https://aranking2021.sumomo.ne.jp/results)になります。  
+[ランキングの結果画面](https://chibatoya.sakura.ne.jp/aranking/public/results)になります。  
 リロードするたびに表示されるポケモンが変わる仕様になっています。  
 ![image](https://user-images.githubusercontent.com/64852221/133055895-4452b567-eb5a-4fd2-a31c-a8d1becfb323.png)    
 レスポンシブWebデザインにも対応しています。以下スマートフォンでの表示になります。  
@@ -32,7 +32,7 @@
 </div>
 
 ## 回答状況確認画面
-[回答状況確認画面](https://aranking2021.sumomo.ne.jp/answerStatus)になります。  
+[回答状況確認画面](https://chibatoya.sakura.ne.jp/aranking/public/answerStatus)になります。  
 現在のサークル全体の回答状況が可視化できます。このページを使って回答の催促を行いました。
 ![image](https://user-images.githubusercontent.com/64852221/135433734-f2425691-a827-4a81-b2c9-d772f319c67e.png)
 
@@ -52,7 +52,7 @@ LINEのAPIに関する記述をController内で全て書いてしまうと、可
 ##### 集計結果は既定の日時にならないと表示されない
 既定の日時になるまでは「結果を見る」ボタンを押しても「集計中です」と返信が来るようになっており、仮に結果画面のurlにアクセスしたとしても、結果が見れないような仕様にしています。
 ##### 現在の回答数がわかる
-サークルの代表に「回答状況がわかる画面が欲しい」と言われたので作りました。[回答管理画面](https://aranking2021.sumomo.ne.jp/management)にアクセスすると現在の回答状況が確認できます。
+サークルの代表に「回答状況がわかる画面が欲しい」と言われたので作りました。[回答管理画面](https://chibatoya.sakura.ne.jp/aranking/public/management)にアクセスすると現在の回答状況が確認できます。
 　　
 ## 改善点
 ##### レスポンスを全て数値で管理してしまった
