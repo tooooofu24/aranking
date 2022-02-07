@@ -135,7 +135,7 @@ class LineController extends Controller
             } elseif ($event instanceof MessageEvent) {
                 $message = $event->getText();
                 if ($message == '結果を見る') {
-                    $bot->replyText($replyToken, 'https://aranking2021.sumomo.ne.jp/results');
+                    $bot->replyText($replyToken, 'https://chibatoya.sakura.ne.jp/aranking/public/results');
                 }
                 if ($message == '回答を始める') {
                     $builder = LineMessagingApi::start();
